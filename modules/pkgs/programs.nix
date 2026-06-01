@@ -14,6 +14,7 @@
     fastfetch
     btop
     wtype
+    sops
 
     # 桌面集成
     gnome-font-viewer
