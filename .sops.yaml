@@ -1,0 +1,13 @@
+# .sops.yaml
+keys:
+  - &your_age age18xxa5gkcwdad5dsngs0p2rfn4665uv3jdr7ls5tka6597fguh37qcwl0y3  # 你的 age 公钥
+  - &dynx_age age1fjh3w7uakf2lc0nwmd4flm3xk0lp0kgj5c60x3pq9lyp8cmkk96q7mx6j5  # dynx 主机的 age 公钥
+  #- &dynix_age age1zzzzz... # dynix 主机的 age 公钥
+
+creation_rules:
+  - path_regex: secrets/[^/]+\.yaml$
+    key_groups:
+      - age:
+          - *your_age
+          - *dynx_age
+          #- *dynix_age

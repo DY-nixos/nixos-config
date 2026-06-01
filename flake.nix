@@ -29,9 +29,14 @@
       url = "github:nixpak/nixpak";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # 添加 sops-nix 输入
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, stylix, sops-nix, ... }@inputs:
   let
     hostSystem = "x86_64-linux";
     lib = nixpkgs.lib;
@@ -80,7 +85,8 @@
       lib.nixosSystem {
         specialArgs = { inherit inputs hostName; };
         modules = [
-          stylix.nixosModules.stylix  # ← 添加这一行！
+          stylix.nixosModules.stylix
+          sops-nix.nixosModules.sops  # ← 添加 sops-nix 系统模块
           { networking.hostName = hostName; }
           hostConfig
           home-manager.nixosModules.home-manager
@@ -92,6 +98,8 @@
               users = userConfigs;
               # 可选：自动备份冲突文件
               backupFileExtension = "backup";
+              # 为每个用户添加 sops-nix 的 home-manager 模块
+              sharedModules = [ sops-nix.homeManagerModules.sops ];
             };
           }
         ] ++ systemModules;
