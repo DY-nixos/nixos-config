@@ -11,7 +11,7 @@
     fsearch
     mupdf
     zathura
-    libreoffice
+    #libreoffice
     pureref
     kdePackages.filelight
     kdePackages.partitionmanager

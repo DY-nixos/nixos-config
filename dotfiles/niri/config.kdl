@@ -157,7 +157,9 @@ layout {
        top 0
         bottom 0
     }
-
+    
+    
+    
     //empty-workspace-above-first
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -372,7 +374,7 @@ animations {
 // Work around WezTerm's initial configure bug
 
 // by setting an empty default-column-width.
-layer-rule{
+/-layer-rule{
     match namespace="hyprpaper"
      place-within-backdrop true
 }
@@ -429,6 +431,11 @@ window-rule {
 
 layer-rule {
     match namespace="^quickshell-wallpaper$"
+}
+
+layer-rule {
+    match namespace="^noctalia-wallpaper*"
+    place-within-backdrop true
 }
 
 layer-rule {
@@ -517,7 +524,8 @@ binds {
     //Mod+E {spawn "alacritty" "-e" "yazi";}
     Mod+E {spawn "thunar";}
     Mod+B hotkey-overlay-title="打开浏览器: firefox" { spawn "firefox"; }
-    Mod+Shift+B hotkey-overlay-title="打开浏览器: google-chrome-stable" { spawn "google-chrome-stable"; }
+    //Mod+Shift+B hotkey-overlay-title="打开浏览器: google-chrome-stable" { spawn "google-chrome-stable"; }
+    Mod+Shift+B hotkey-overlay-title="打开浏览器: zen" { spawn "zen"; }
     Mod+Shift+Z hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Mod+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     Mod+P hotkey-overlay-title="Pick a color" { spawn-sh "hyprpicker | wl-copy"; }
