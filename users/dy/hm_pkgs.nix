@@ -12,7 +12,7 @@
     mupdf
     zathura
     #libreoffice
-    pureref
+    #pureref
     kdePackages.filelight
     kdePackages.partitionmanager
     xwayland-satellite

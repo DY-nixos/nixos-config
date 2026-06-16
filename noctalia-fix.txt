@@ -1,0 +1,20 @@
+===== noctalia-shell → noctalia 修复对照表 =====
+
+问题：二进制名为 `noctalia`，不是 `noctalia-shell`
+用法变化：`noctalia-shell ipc call xxx` → `noctalia msg call xxx`
+
+============================================================
+文件                                              | 旧写法（需替换）                                | 新写法
+============================================================
+dotfiles/niri/config.kdl:328                     | spawn-at-startup "noctalia-shell"              | spawn-at-startup "noctalia"
+dotfiles/niri/config.kdl:516                     | noctalia-shell ipc call wallpaper toggle       | noctalia msg call wallpaper toggle
+dotfiles/niri/config.kdl:535                     | noctalia-shell ipc call launcher toggle        | noctalia msg call launcher toggle
+dotfiles/hypr/hyprland.conf:53                   | exec-once = noctalia-shell                     | exec-once = noctalia -d
+dotfiles/hypr/hyprland.conf:273                  | noctalia-shell ipc call launcher toggle        | noctalia msg call launcher toggle
+dotfiles/hypr/hyprland.conf:276                  | noctalia-shell ipc call wallpaper toggle       | noctalia msg call wallpaper toggle
+dotfiles/noctalia/settings.json:70               | noctalia-shell ipc call wallpaper toggle       | noctalia msg call wallpaper toggle
+============================================================
+
+说明：
+- 启动：`noctalia`（前台）或 `noctalia -d`（后台守护进程）
+- IPC 调用：`noctalia msg call <功能> <动作>`（原为 `noctalia-shell ipc call`）

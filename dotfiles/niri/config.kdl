@@ -325,6 +325,7 @@ layout {
 //spawn-at-startup "mako"
 //spawn-at-startup "waybar"
 spawn-at-startup "noctalia-shell"
+spawn-at-startup "noctalia"
 //spawn-at-startup "dms" "run"
 //spawn-at-startup "clash-verge"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
@@ -489,6 +490,7 @@ window-rule {
     opacity 0.99
 }
 
+
 //非聚焦窗口
 
 window-rule {
@@ -532,8 +534,7 @@ binds {
     //Mod+F2 {spawn-sh "pkill waybar & pkill cava || true &&  waybar ";}
     Mod+Alt+V {spawn-sh "copyq toggle || clipse-gui";}
     Mod+Z { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
-    
-    
+    //Mod+Z { spawn-sh "noctalia msg panel-toggle launcher"; }
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
     // For example, this is a standard bind to toggle the screen reader (orca).
@@ -549,7 +550,7 @@ binds {
 
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avsoid going through "sh"),
-    // but you need to manually put each argument in separate "" quotes.
+    // but you need to manually put eawch argument in separate "" quotes.
     XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+5%"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
 
