@@ -35,6 +35,8 @@
     webp-pixbuf-loader
     libopenraw
 
+
+
     # 编辑器
     mousepad
     # 系统监控
