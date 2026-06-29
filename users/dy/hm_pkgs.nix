@@ -10,8 +10,8 @@
     loupe
     fsearch
     mupdf
-    zathura
-    #libreoffice
+    #zathura
+    libreoffice
     #pureref
     #kdePackages.filelight
     kdePackages.partitionmanager
