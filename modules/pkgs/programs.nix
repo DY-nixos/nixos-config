@@ -15,6 +15,8 @@
     btop
     wtype
     sops
+    fcrackzip
+    unzip
 
     # 桌面集成
     gnome-font-viewer
@@ -34,6 +36,7 @@
     libheif
     webp-pixbuf-loader
     libopenraw
+    baidupcs-go
 
 
 

@@ -1,7 +1,9 @@
 { config, pkgs, lib, ... }: {
 
   networking.networkmanager.enable = true;
-
+  nixpkgs.config.permittedInsecurePackages = [
+    "pnpm-9.15.9"
+  ];
   environment.systemPackages = with pkgs; [
     clash-verge-rev
     mihomo

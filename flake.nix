@@ -9,6 +9,7 @@
     };
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell/v4.7.7";
+      #url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "github:hyprwm/Hyprland";
@@ -61,7 +62,9 @@
 
     validUsers =
       if builtins.pathExists ./users then
-        builtins.filter (name: builtins.pathExists (./users + "/${name}"))
+        builtins.filter (name:
+          builtins.pathExists (./users + "/${name}") &&
+          loadModulesFrom (./users + "/${name}") != [])
           (builtins.attrNames (builtins.readDir ./users))
       else [];
 
@@ -100,8 +103,6 @@
               users = userConfigs;
               # 可选：自动备份冲突文件
               backupFileExtension = "backup";
-              # 为每个用户添加 sops-nix 的 home-manager 模块
-              sharedModules = [ sops-nix.homeManagerModules.sops ];
             };
           }
         ] ++ systemModules;
