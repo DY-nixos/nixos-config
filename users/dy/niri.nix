@@ -8,4 +8,7 @@ in {
     source = mkOutOfStoreSymlink "${configDir}/dotfiles/niri/config.kdl";
     force = true;
   };
+  xdg.configFile."niri/scripts/swayidle.sh" = {
+    source = mkOutOfStoreSymlink "${configDir}/dotfiles/niri/scripts/swayidle.sh";
+  };
 }

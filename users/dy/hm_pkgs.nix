@@ -18,6 +18,8 @@
     xwayland-satellite
     nerd-fonts.jetbrains-mono
     capitaine-cursors
+    swayidle
+    swaylock
   ];
 
   home.sessionVariables = {

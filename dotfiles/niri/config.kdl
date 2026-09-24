@@ -331,7 +331,7 @@ spawn-at-startup "noctalia"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 spawn-sh-at-startup "clipse --listen" 
 spawn-at-startup "nm-applet"
-spawn-at-startup "~/.config/niri/scripts/swayidle.sh"
+spawn-sh-at-startup "/home/dy/.config/niri/scripts/swayidle.sh"
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 //spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
