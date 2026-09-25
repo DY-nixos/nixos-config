@@ -15,8 +15,9 @@
     btop
     wtype
     sops
-    fcrackzip
+    #fcrackzip #破解 zip 密码的工具
     unzip
+    _7zz
 
     # 桌面集成
     gnome-font-viewer
