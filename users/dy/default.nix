@@ -8,10 +8,5 @@
   gtk.enable = lib.mkForce false;
   home.pointerCursor.enable = false;
 
-  xdg.mimeApps.defaultApplications = {
-    "text/html" = [ "firefox.desktop" ];
-    "application/xhtml+xml" = [ "firefox.desktop" ];
-    "x-scheme-handler/http" = [ "firefox.desktop" ];
-    "x-scheme-handler/https" = [ "firefox.desktop" ];
-  };
+  # 默认浏览器的锁定在 browsers.nix 里
 }

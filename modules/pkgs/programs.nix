@@ -46,7 +46,7 @@
     # 系统监控
     mission-center
     # 3D (需要 CUDA/GPU 支持)
-    blender
+    # blender 在 blender.nix 里, 那里锁了版本
     #AI
     opencode
     #claude-code
