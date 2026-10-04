@@ -1,0 +1,1 @@
+sudo chown -R dy:users /home/dy/nixos-config

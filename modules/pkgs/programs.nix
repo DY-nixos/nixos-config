@@ -17,7 +17,6 @@
     sops
     #fcrackzip #破解 zip 密码的工具
     unzip
-    _7zz
 
     # 桌面集成
     gnome-font-viewer
@@ -38,6 +37,7 @@
     webp-pixbuf-loader
     libopenraw
     baidupcs-go
+    #koodo-reader
 
 
 
@@ -49,6 +49,7 @@
     # blender 在 blender.nix 里, 那里锁了版本
     #AI
     opencode
+    #codex
     #claude-code
   ];
 }

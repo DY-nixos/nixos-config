@@ -23,6 +23,5 @@
     mangohud
     winetricks
     protonup-ng
-    goverlay
   ];
 }

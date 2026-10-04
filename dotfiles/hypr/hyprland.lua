@@ -145,7 +145,7 @@ hl.curve("almostLinear",   { type = "bezier", points = { {0.5, 0.5},   {0.75, 1}
 hl.curve("quick",          { type = "bezier", points = { {0.15, 0},    {0.1, 1}     } })
 
 -- Default springs
-hl.curve("easy",           { type = "spring", mass = 1, stiffness = 238.1191, damping = 24.21279333 })
+hl.curve("easy",           { type = "spring", mass = 1, stiffness = 238.1191, dampening = 24.21279333 })
 
 hl.animation({ leaf = "global",        enabled = true,  speed = 10,   bezier = "default" })
 hl.animation({ leaf = "border",        enabled = true,  speed = 5.39, bezier = "easeOutQuint" })
@@ -265,6 +265,8 @@ hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
 -- 全屏切换
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = 1 }))
 
+-- 截图（区域选择后复制到剪贴板）
+hl.bind(mainMod .. " + ALT + A", hl.dsp.exec_cmd([[grim -g "$(slurp)" -t ppm - | satty -f - --copy-command wl-copy]]))
 -- 打开 Firefox / zen
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("firefox"))
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("zen"))

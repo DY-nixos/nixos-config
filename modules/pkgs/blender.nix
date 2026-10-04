@@ -22,7 +22,19 @@ let
     makeWrapper
     patchelf
     addDriverRunpath
-    xorg
+    libx11
+    libxrender
+    libxfixes
+    libxi
+    libxext
+    libxxf86vm
+    libxcursor
+    libxinerama
+    libxrandr
+    libxdamage
+    libxcomposite
+    libsm
+    libice
     libGL
     vulkan-loader
     libxkbcommon
@@ -38,19 +50,19 @@ let
 
   # 官方包是给通用 Linux 编译的, 依赖的 X11/GL/vulkan 库得手动指过去
   glibc = lib.makeLibraryPath [
-    xorg.libX11
-    xorg.libXrender
-    xorg.libXfixes
-    xorg.libXi
-    xorg.libXext
-    xorg.libXxf86vm
-    xorg.libXcursor
-    xorg.libXinerama
-    xorg.libXrandr
-    xorg.libXdamage
-    xorg.libXcomposite
-    xorg.libSM
-    xorg.libICE
+    libx11
+    libxrender
+    libxfixes
+    libxi
+    libxext
+    libxxf86vm
+    libxcursor
+    libxinerama
+    libxrandr
+    libxdamage
+    libxcomposite
+    libsm
+    libice
     libGL
     vulkan-loader
     libxkbcommon

@@ -38,7 +38,10 @@
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.grub.device = "nodev";
   boot.loader.grub.useOSProber = false;
-
+  
+  # 关闭 USB 自动挂起，防止输入设备休眠掉线
+  # 触发 Hyprland/libaquamarine 在 evdev 移除路径上的崩溃
+  boot.kernelParams = [ "usbcore.autosuspend=-1" ];
 
 
   # do not need to keep too much generations

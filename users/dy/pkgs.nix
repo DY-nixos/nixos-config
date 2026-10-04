@@ -6,7 +6,7 @@
     fuzzel
     mpv
     obs-studio
-    foliate
+    #foliate
     loupe
     fsearch
     mupdf
@@ -19,6 +19,10 @@
     capitaine-cursors
     #swayidle
     #swaylock
+    grim
+    slurp
+    wl-clipboard
+    satty
   ];
 
   home.sessionVariables = {
