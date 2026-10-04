@@ -11,15 +11,14 @@
     fsearch
     mupdf
     #zathura
-    #libreoffice
     #pureref
     #kdePackages.filelight
     kdePackages.partitionmanager
     xwayland-satellite
     nerd-fonts.jetbrains-mono
     capitaine-cursors
-    swayidle
-    swaylock
+    #swayidle
+    #swaylock
   ];
 
   home.sessionVariables = {

@@ -7,6 +7,4 @@
   
   gtk.enable = lib.mkForce false;
   home.pointerCursor.enable = false;
-
-  # 默认浏览器的锁定在 browsers.nix 里
 }

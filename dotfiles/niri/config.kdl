@@ -331,7 +331,7 @@ spawn-at-startup "noctalia"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 spawn-sh-at-startup "clipse --listen" 
 spawn-at-startup "nm-applet"
-spawn-sh-at-startup "/home/dy/.config/niri/scripts/swayidle.sh"
+//spawn-sh-at-startup "/home/dy/.config/niri/scripts/swayidle.sh"
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 //spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
@@ -527,18 +527,18 @@ binds {
     Mod+E {spawn "thunar";}
     Mod+B hotkey-overlay-title="打开浏览器: firefox" { spawn "firefox"; }
     //Mod+Shift+B hotkey-overlay-title="打开浏览器: google-chrome-stable" { spawn "google-chrome-stable"; }
-    Mod+Shift+B hotkey-overlay-title="打开浏览器: zen" { spawn "zen"; }
+    //Mod+Shift+B hotkey-overlay-title="打开浏览器: zen" { spawn "zen"; }
     Mod+Shift+Z hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Mod+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
-    Mod+P hotkey-overlay-title="Pick a color" { spawn-sh "hyprpicker | wl-copy"; }
+    //Mod+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    //Mod+P hotkey-overlay-title="Pick a color" { spawn-sh "hyprpicker | wl-copy"; }
     //Mod+F2 {spawn-sh "pkill waybar & pkill cava || true &&  waybar ";}
-    Mod+Alt+V {spawn-sh "copyq toggle || clipse-gui";}
+    //Mod+Alt+V {spawn-sh "copyq toggle || clipse-gui";}
     Mod+Z { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
     //Mod+Z { spawn-sh "noctalia msg panel-toggle launcher"; }
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
     // For example, this is a standard bind to toggle the screen reader (orca).
-    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
+    //Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
     //Super+Alt+V {spawn "copyq" "toggle";}
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
@@ -789,7 +789,7 @@ binds {
     Mod+Ctrl+Insert { screenshot-window; }
     Mod+Insert { screenshot-screen; }
     //Mod+Shift+S { spawn "~/.config/niri/scripts/satty-screenshot.sh";}
-    Mod+Shift+S {spawn-sh "wl-paste | satty -f -";}
+    //Mod+Shift+S {spawn-sh "wl-paste | satty -f -";}
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
@@ -802,17 +802,15 @@ binds {
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     // The quit action will show a confirmation dialog to avoid accidental exits.
-    Mod+Shift+Ctrl+Q { spawn "wlogout"; }
+    //Mod+Shift+Ctrl+Q { spawn "wlogout"; }
     Mod+Shift+E { quit; }
-    Ctrl+Alt+Delete { spawn "wlogout"; }
+    //Ctrl+Alt+Delete { spawn "wlogout"; }
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
-    Mod+Shift+P { power-off-monitors; }
+    //Mod+Shift+P { power-off-monitors; }
     //Mod+MouseMiddle  { close-window; }
 }
 
 include "./noctalia.kdl"
-
-
 include "dms/windowrules.kdl"
 include "dms/binds.kdl"
