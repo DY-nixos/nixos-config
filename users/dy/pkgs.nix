@@ -6,19 +6,14 @@
     fuzzel
     mpv
     obs-studio
-    #foliate
     loupe
     fsearch
     mupdf
-    #zathura
-    #pureref
-    #kdePackages.filelight
+    
     kdePackages.partitionmanager
     xwayland-satellite
     nerd-fonts.jetbrains-mono
     capitaine-cursors
-    #swayidle
-    #swaylock
     grim
     slurp
     wl-clipboard

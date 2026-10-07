@@ -15,7 +15,6 @@
     btop
     wtype
     sops
-    #fcrackzip #破解 zip 密码的工具
     unzip
 
     # 桌面集成
@@ -37,19 +36,14 @@
     webp-pixbuf-loader
     libopenraw
     baidupcs-go
-    #koodo-reader
-
-
-
+    
     # 编辑器
     mousepad
     # 系统监控
     mission-center
-    # 3D (需要 CUDA/GPU 支持)
-    # blender 在 blender.nix 里, 那里锁了版本
+
     #AI
     opencode
     #codex
-    #claude-code
   ];
 }

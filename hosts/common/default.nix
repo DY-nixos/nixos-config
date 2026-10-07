@@ -13,6 +13,7 @@
 
   time.timeZone = "Asia/Shanghai";
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.android_sdk.accept_license = true; 
   system.stateVersion = "25.11";
 
   # --- 引导 ---
