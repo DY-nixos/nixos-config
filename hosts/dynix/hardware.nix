@@ -8,30 +8,26 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "ehci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" "sr_mod" "rtsx_usb_sdmmc" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "ohci_pci" "ehci_pci" "usb_storage" "sd_mod" "sr_mod" "sdhci_pci" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/619b125b-20c3-48da-be84-68802ba45b34";
+    { device = "/dev/disk/by-uuid/0495dc60-2be4-4fa9-a628-ce4e96d64d43";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/8978-7AE6";
+    { device = "/dev/disk/by-uuid/2BC3-2BAB";
       fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  # 将两个交换设备合并到一个列表里
-  swapDevices = [ 
-    # 这是你原本的物理交换分区
-    { device = "/dev/disk/by-uuid/b1a8ea8b-5981-452a-b2ad-dabd0e2f7138"; } 
-    
-    # 这是你新增的 16GB 交换文件
-    { device = "/var/lib/swapfile"; size = 16384; } 
-  ];
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/1ff16c56-5ef1-4c51-a970-6722fa8f4787"; }
+    ];
+
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

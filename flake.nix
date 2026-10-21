@@ -1,5 +1,5 @@
 {
-  description = "NixOS multi-host configuration";
+  description = "NixOS multi-host configuration (modular, explicit imports)";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -8,8 +8,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell/v4.7.7";
-      #url = "github:noctalia-dev/noctalia";
+      #url = "github:noctalia-dev/noctalia-shell/v5.3.0";
+      url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "github:hyprwm/Hyprland";
@@ -18,7 +18,6 @@
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # 添加 sops-nix 输入
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,74 +26,30 @@
 
   outputs = { self, nixpkgs, home-manager, sops-nix, ... }@inputs:
   let
-    hostSystem = "x86_64-linux";
     lib = nixpkgs.lib;
 
-    # 递归加载目录下所有 .nix 文件
-    loadModulesFrom = path:
-      if builtins.pathExists path then
-        let
-          entries = builtins.readDir path;
-          names = builtins.attrNames entries;
-          nixFiles = map (f: path + "/${f}")
-            (builtins.filter (n: entries.${n} == "regular" && lib.hasSuffix ".nix" n) names);
-          subDirs = builtins.filter (n: entries.${n} == "directory") names;
-          subModules = builtins.concatMap (d: loadModulesFrom (path + "/${d}")) subDirs;
-        in
-        nixFiles ++ subModules
-      else [];
-
-    systemModules = loadModulesFrom ./modules;
-
-    validUsers =
-      if builtins.pathExists ./users then
-        builtins.filter (name:
-          builtins.pathExists (./users + "/${name}") &&
-          loadModulesFrom (./users + "/${name}") != [])
-          (builtins.attrNames (builtins.readDir ./users))
-      else [];
-
-    # 构建用户配置（修复：添加默认的 stateVersion）
-    userConfigs = 
-      if validUsers != [] then
-        builtins.listToAttrs (map (username: {
-          name = username;
-          value = { config, pkgs, ... }: {
-            imports = loadModulesFrom (./users + "/${username}");
-            home.stateVersion = "24.11";
-            programs.home-manager.enable = true;
-          };
-        }) validUsers)
-      else {
-        dy = { config, pkgs, ... }: {
-          home.stateVersion = "24.11";
-          programs.home-manager.enable = true;
-        };
-      };
-
-    mkHost = hostName: hostConfig:
-      lib.nixosSystem {
-        specialArgs = { inherit inputs hostName; };
-        modules = [
-          sops-nix.nixosModules.sops  # ← 添加 sops-nix 系统模块
-          { networking.hostName = hostName; }
-          hostConfig
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              extraSpecialArgs = { inherit inputs; };
-              users = userConfigs;
-              # 可选：自动备份冲突文件
-              backupFileExtension = "backup";
+    mkHost = hostModule: lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+      modules = [
+        sops-nix.nixosModules.sops
+        hostModule
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = { inherit inputs; };
+            backupFileExtension = "backup";
+            users.dy = {
+              imports = [ ./users/dy ];
             };
-          }
-        ] ++ systemModules;
-      };
+          };
+        }
+      ];
+    };
   in
   {
-    nixosConfigurations.dynx = mkHost "dynx" ./hosts/dynx/configuration.nix;
-    nixosConfigurations.dynix = mkHost "dynix" ./hosts/dynix/configuration.nix;
+    nixosConfigurations.dynx = mkHost ./hosts/dynx;
+    nixosConfigurations.dynix = mkHost ./hosts/dynix;
   };
 }

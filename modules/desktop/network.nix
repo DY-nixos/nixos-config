@@ -10,9 +10,9 @@
   ];
   programs.clash-verge = {
     enable = true;
-    autoStart = true;   
+    autoStart = true;
     serviceMode = true;
-    tunMode = true; 
+    tunMode = true;
   };
   
   #networking.proxy.default = "http://127.0.0.1:7897/";

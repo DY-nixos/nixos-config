@@ -1,15 +1,8 @@
 { config, pkgs, lib, ... }:
 {
-  programs.niri.enable = true;
   programs.xwayland.enable = true;
   programs.uwsm.enable = true;
   programs.dconf.enable = true;
-  
-  programs.uwsm.waylandCompositors.niri = {
-    binPath = "/run/current-system/sw/bin/niri-session";
-    comment = "Niri (UWSM managed)";
-    prettyName = "Niri";
-  };
 
   services.gvfs.enable = true;
   services.udisks2.enable = true;
