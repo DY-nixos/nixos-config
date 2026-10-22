@@ -345,3 +345,6 @@ hl.window_rule({
 })
 -- For Noctalia Color templates
 require("noctalia").apply_theme()
+
+-- DMS Include Configs
+require("dms.cursor")

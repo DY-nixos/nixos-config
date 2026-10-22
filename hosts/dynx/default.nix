@@ -2,19 +2,18 @@
 
 {
   imports = [
+    ../../modules/gpu/nvidia.nix
     ../../modules/system
     ../../modules/desktop
     ../../modules/desktop/niri.nix
-    ../../modules/gpu/nvidia.nix
-
-    ../../modules/apps/programs.nix
-    ../../modules/apps/cli.nix
+    ../../modules/desktop/noctalia.nix
     ../../modules/desktop/network.nix
+    
+    ../../modules/apps/programs.nix
     ../../modules/apps/appimage.nix
     ../../modules/apps/blender.nix
     ../../modules/apps/default-browser.nix
     ../../modules/apps/flatpak.nix
-    ../../modules/desktop/noctalia.nix
     ../../modules/apps/opencode.nix
     ../../modules/apps/qBittorrent.nix
     ../../modules/apps/steam.nix

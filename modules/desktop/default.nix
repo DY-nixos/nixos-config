@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./cli.nix
     ./wayland.nix
     ./hypr.nix
     ./dms.nix

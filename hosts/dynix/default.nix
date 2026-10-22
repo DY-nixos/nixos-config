@@ -7,7 +7,7 @@
     ../../modules/gpu/amd.nix
 
     ../../modules/apps/programs.nix
-    ../../modules/apps/cli.nix
+    ../../modules/apps/default-browser.nix
     ../../modules/desktop/network.nix
 
     ./hardware.nix
